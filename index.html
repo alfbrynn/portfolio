@@ -3,97 +3,142 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M. Alif Febriansyah | Portofolio</title>
+    <title>Portfolio Anda - Front End Engineer</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   </head>
   <body>
-    <!-- NAVBAR -->
-    <header class="navbar">
-      <div class="container">
-        <div class="logo">M. Alif Febriansyah</div>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#home">Beranda</a></li>
-            <li><a href="#about">Tentang</a></li>
-            <li><a href="#projects">Proyek</a></li>
-            <li><a href="#contact">Kontak</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <div class="wrapper">
+      <header class="sidebar-kiri">
+        <div class="sidebar-konten">
+          <div class="info-diri">
+            <h1>Nama Anda</h1>
+            <h2>Front End Engineer</h2>
+            <p>Saya membangun pengalaman digital yang aksesibel dan pixel-perfect untuk web.</p>
+          </div>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <h1>
-          Halo, Saya <span class="highlight">M. Alif<br />Febriansyah</span>
-        </h1>
-        <p>Mahasiswa Teknik Informatika — Web Developer, UI/UX Designer & Cybersecurity Enthusiast.</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn-primary">Lihat Proyek Saya</a>
-          <a href="https://drive.google.com/your-cv-link" target="_blank" class="btn-secondary">Download CV</a>
+          <nav class="navigasi-halaman">
+            <ul>
+              <li>
+                <a href="#about"><span></span>About</a>
+              </li>
+              <li>
+                <a href="#experience"><span></span>Experience</a>
+              </li>
+              <li>
+                <a href="#projects"><span></span>Projects</a>
+              </li>
+            </ul>
+          </nav>
         </div>
-      </div>
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2>Tentang Saya</h2>
-        <p>
-          Saya adalah mahasiswa Politeknik Negeri Malang jurusan Teknik Informatika. Saya memiliki ketertarikan pada pengembangan web, desain UI/UX, serta keamanan siber. Saya berfokus untuk terus belajar dan mengembangkan kemampuan teknis
-          sekaligus estetika digital.
-        </p>
-      </div>
-    </section>
+        <ul class="sosial-media">
+          <li>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+        </ul>
+      </header>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="projects">
-      <div class="container">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="project-grid">
-          <div class="project-item">
-            <img src="assets/img/project1.jpg" alt="Proyek 1" />
-            <div class="project-info">
-              <h3>Web Koperasi</h3>
-              <p>Aplikasi simpan pinjam berbasis Java dengan fitur CRUD dan GUI.</p>
+      <main class="konten-kanan">
+        <section id="about" class="konten-section">
+          <p>Saya adalah seorang developer yang bersemangat dalam membuat antarmuka pengguna (UI) yang aksesibel dan pixel-perfect, yang memadukan desain yang bijaksana dengan rekayasa (engineering) yang kuat.</p>
+          <p>Saat ini, saya adalah mahasiswa Teknik Informatika di [Universitas Anda], yang berspesialisasi dalam pengembangan front-end. Saya berkontribusi dalam pembuatan komponen UI yang... (Tulis tentang Anda di sini).</p>
+          <p>Dulu, saya telah... (Tulis pengalaman lain di sini).</p>
+        </section>
+
+        <section id="experience" class="konten-section">
+          <h2>Experience</h2>
+
+          <div class="list-card">
+            <div class="card-header">
+              <span class="card-date">2024 — PRESENT</span>
+              <h3 class="card-title">
+                <a href="#">Jabatan Anda ・ Nama Perusahaan/Organisasi <i class="fas fa-arrow-up-right-from-square"></i></a>
+              </h3>
+              <p class="card-subtitle">Deskripsi singkat jabatan</p>
+            </div>
+            <div class="card-body">
+              <p>Deskripsikan tanggung jawab dan pencapaian utama Anda di sini. Buat dalam poin-poin singkat jika perlu.</p>
+              <ul class="tech-pills">
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>React</li>
+                <li>Node.js</li>
+              </ul>
             </div>
           </div>
-          <div class="project-item">
-            <img src="assets/img/project2.jpg" alt="Proyek 2" />
-            <div class="project-info">
-              <h3>UI/UX Aplikasi Obatku</h3>
-              <p>Desain aplikasi pengingat obat untuk lansia dengan maskot interaktif.</p>
+
+          <div class="list-card">
+            <div class="card-header">
+              <span class="card-date">2023 — 2024</span>
+              <h3 class="card-title">
+                <a href="#">Asisten Laboratorium ・ Lab Komputer <i class="fas fa-arrow-up-right-from-square"></i></a>
+              </h3>
+              <p class="card-subtitle">Asisten Praktikum</p>
+            </div>
+            <div class="card-body">
+              <p>Membantu dosen dalam mengajar mata kuliah Algoritma dan Struktur Data, serta mengelola praktikum mingguan.</p>
+              <ul class="tech-pills">
+                <li>Java</li>
+                <li>Python</li>
+                <li>Struktur Data</li>
+              </ul>
             </div>
           </div>
-          <div class="project-item">
-            <img src="assets/img/project3.jpg" alt="Proyek 3" />
-            <div class="project-info">
-              <h3>Infografis Cyber Security</h3>
-              <p>Poster edukatif mengenai keamanan siber di Indonesia.</p>
+        </section>
+
+        <section id="projects" class="konten-section">
+          <h2>Projects</h2>
+
+          <div class="list-card project-card">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/150x80.png?text=Proyek+Anda" alt="Screenshot Proyek" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="#">Nama Proyek Keren <i class="fas fa-arrow-up-right-from-square"></i></a>
+              </h3>
+              <p>Deskripsi singkat tentang proyek ini. Apa tujuannya dan teknologi apa yang digunakan?</p>
+              <ul class="tech-pills">
+                <li>React</li>
+                <li>Express</li>
+                <li>Spotify API</li>
+                <li>Heroku</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>Hubungi Saya</h2>
-        <p>Saya selalu terbuka untuk peluang kolaborasi atau diskusi.</p>
-        <a href="mailto:m.alif@example.com" class="btn-primary">Kirim Email</a>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <p>© 2025 M. Alif Febriansyah</p>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
+          <div class="list-card project-card">
+            <div class="project-image">
+              <img src="https://via.placeholder.com/150x80.png?text=Proyek+Lain" alt="Screenshot Proyek Lain" />
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">
+                <a href="#">Aplikasi Catatan Minimalis <i class="fas fa-arrow-up-right-from-square"></i></a>
+              </h3>
+              <p>Web app untuk membuat catatan cepat, dibuat dengan HTML, CSS murni, dan JavaScript (local storage).</p>
+              <ul class="tech-pills">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>

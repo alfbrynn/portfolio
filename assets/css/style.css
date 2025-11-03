@@ -1,213 +1,352 @@
-/* RESET */
+/* ==================
+   1. PENGATURAN GLOBAL & TEMA
+   =================== */
+
+/* :root adalah tempat terbaik untuk menyimpan variabel CSS */
+:root {
+  --warna-bg: #0a192f; /* Biru Navy Gelap */
+  --warna-teks-primer: #ccd6f6; /* Abu-abu Kebiruan Cerah */
+  --warna-teks-sekunder: #8892b0; /* Abu-abu */
+  --warna-teks-judul: #e6f1ff; /* Putih Cerah */
+  --warna-aksen: #64ffda; /* Mint/Cyan Cerah */
+  --warna-aksen-transparan: rgba(100, 255, 218, 0.1);
+  --warna-kartu-bg: rgba(17, 34, 64, 0.5); /* Biru sedikit transparan */
+
+  --font-sans: "Inter", sans-serif;
+}
+
+/* Reset dasar */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body {
-  font-family: "Montserrat", sans-serif;
-  background-color: #d6c5a8;
-  color: #222;
+
+html {
+  /* Untuk efek scroll-spy nanti */
   scroll-behavior: smooth;
 }
 
-/* UTILITIES */
-.container {
-  width: min(1200px, 92%);
-  margin: 0 auto;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--warna-bg);
+  color: var(--warna-teks-sekunder);
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(214, 197, 168, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  z-index: 50;
+/* ==================
+   2. LAYOUT UTAMA (GRID)
+   Ini adalah teknik kuncinya!
+   =================== */
+.wrapper {
+  display: grid;
+  /* Kolom 1 (kiri) lebarnya 40% dari total, tapi maksimal 450px.
+      Kolom 2 (kanan) mengambil sisa ruang (1fr).
+    */
+  grid-template-columns: minmax(300px, 40%) 1fr;
+
+  /* Beri jarak antar kolom */
+  gap: 2rem;
+
+  /* Batasi lebar maksimum dan beri padding */
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 5rem 3rem;
 }
-.navbar .container {
+
+/* ==================
+   3. STYLING KOLOM KIRI (SIDEBAR)
+   =================== */
+.sidebar-kiri {
+  /* Ini adalah trik kedua:
+      1. 'position: sticky' membuatnya menempel saat scroll.
+      2. 'top: 5rem' memberinya jarak dari atas layar.
+      3. 'align-self: start' mencegahnya meregang.
+    */
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+
+  /* Atur tinggi agar tidak melebihi layar saat menempel */
+  height: calc(100vh - 10rem);
+
+  /* Gunakan Flexbox untuk mengatur konten di dalamnya */
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
+  flex-direction: column;
+  justify-content: space-between; /* Mendorong ikon sosial ke bawah */
 }
-.logo {
+
+.info-diri h1 {
+  color: var(--warna-teks-judul);
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+
+.info-diri h2 {
+  color: var(--warna-teks-primer);
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: 0.6px;
+  margin-bottom: 1rem;
 }
-.nav-links {
-  display: flex;
-  gap: 1.2rem;
+
+.info-diri p {
+  font-size: 1.1rem;
+  max-width: 400px; /* Batasi lebar teks */
+}
+
+/* Navigasi di sidebar */
+.navigasi-halaman {
+  margin: 3rem 0;
+}
+
+.navigasi-halaman ul {
   list-style: none;
 }
-.nav-links a {
-  color: #1a1614;
+
+.navigasi-halaman li {
+  margin-bottom: 1rem;
+}
+
+.navigasi-halaman a {
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  color: var(--warna-teks-sekunder);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+/* Garis kecil di sebelah kiri teks navigasi */
+.navigasi-halaman a span {
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background-color: var(--warna-teks-sekunder);
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Efek hover & active */
+.navigasi-halaman a:hover,
+.navigasi-halaman a.active {
+  color: var(--warna-teks-judul);
+}
+
+.navigasi-halaman a:hover span,
+.navigasi-halaman a.active span {
+  width: 60px;
+  background-color: var(--warna-teks-judul);
+}
+
+/* Ikon Sosial Media */
+.sosial-media {
+  list-style: none;
+  display: flex; /* Menyusun ikon secara horizontal */
+  gap: 1.5rem; /* Jarak antar ikon */
+}
+
+.sosial-media a {
+  color: var(--warna-teks-sekunder);
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.sosial-media a:hover {
+  color: var(--warna-teks-judul);
+  transform: translateY(-3px); /* Efek 'terangkat' */
+}
+
+/* ==================
+   4. STYLING KOLOM KANAN (KONTEN)
+   =================== */
+.konten-kanan {
+  /* Kita beri padding-top agar section pertama tidak
+       terlalu menempel dengan header (pada layar kecil) */
+  padding-top: 1rem;
+}
+
+.konten-section {
+  margin-bottom: 6rem; /* Jarak besar antar bagian (About, Exp, Proj) */
+  /* Untuk 'scroll-spy' JS nanti */
+  scroll-margin-top: 5rem;
+}
+
+.konten-section h2 {
+  color: var(--warna-teks-judul);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+
+  /* Hanya tampil di layar besar */
+  display: none;
+}
+
+/* Styling paragraf di 'About' */
+#about p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ==================
+   5. STYLING KARTU (EXPERIENCE & PROJECTS)
+   =================== */
+.list-card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  background-color: transparent; /* Awalnya transparan */
+  transition: all 0.3s ease;
+}
+
+.list-card:hover {
+  background-color: var(--warna-kartu-bg); /* Beri background saat di-hover */
+  transform: translateY(-5px); /* Efek 'terangkat' */
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.list-card a {
+  text-decoration: none;
+  color: var(--warna-teks-judul);
+}
+
+.list-card .card-date {
+  color: var(--warna-teks-sekunder);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.list-card .card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--warna-teks-judul);
+  margin-bottom: 0.25rem;
+}
+
+/* Ikon panah kecil di judul */
+.list-card .card-title i {
+  font-size: 0.8em;
+  transform: translateY(-2px);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.list-card:hover .card-title i {
+  transform: translate(3px, -5px); /* Efek panah bergerak */
+}
+
+.list-card .card-subtitle {
+  color: var(--warna-teks-primer);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.list-card .card-body p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Styling khusus untuk kartu PROYEK (dengan gambar) */
+.project-card {
+  display: grid;
+  grid-template-columns: 150px 1fr; /* Kolom gambar 150px, sisa untuk teks */
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--warna-teks-sekunder);
+}
+
+/* ==================
+   6. PIL TEKNOLOGI (Tech Pills)
+   =================== */
+.tech-pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap; /* Agar bisa pindah baris jika tidak muat */
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tech-pills li {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--warna-aksen-transparan);
+  color: var(--warna-aksen);
+  border-radius: 99px; /* Membuatnya bulat */
+  font-size: 0.8rem;
   font-weight: 500;
 }
 
-/* HERO */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background: url("../img/hero.jpg") center center/cover no-repeat;
-}
+/* ==================
+   7. DESAIN RESPONSIVE
+   =================== */
 
-/* .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(214, 197, 168, 0.55);
-} */
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 3rem;
-  max-width: 650px;
-}
-
-.hero h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.1;
-}
-
-.highlight {
-  color: #3a2e23;
-}
-
-.hero p {
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 0.7rem 1.2rem;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.btn-primary {
-  background: #22170f;
-  color: #fff;
-}
-.btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(34, 23, 15, 0.2);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.9);
-  color: #1a1614;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-.btn-secondary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-}
-
-/* ABOUT */
-.about {
-  padding: 4rem 0;
-  background: #fdfbf7;
-  text-align: center;
-}
-.about h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-.about p {
-  max-width: 750px;
-  margin: 0 auto;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-/* PROJECTS */
-.projects {
-  padding: 4rem 0;
-}
-.section-title {
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-.project-grid {
-  display: grid;
-  gap: 1.2rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-.project-item {
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease;
-}
-.project-item:hover {
-  transform: translateY(-6px);
-}
-.project-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.project-info {
-  padding: 1rem 1.1rem;
-}
-
-/* CONTACT */
-.contact {
-  padding: 3.5rem 0;
-  background: #f4f0e8;
-  text-align: center;
-}
-.contact h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-.contact p {
-  margin-bottom: 1.4rem;
-}
-
-/* FOOTER */
-.footer {
-  background: #22170f;
-  color: #fff;
-  text-align: center;
-  padding: 1.2rem 0;
-}
-
-/* RESPONSIVE */
-@media (max-width: 800px) {
-  .hero-content {
-    text-align: center;
-    margin: 0 auto;
-    padding: 2rem;
+/* === BREAKPOINT 1: TABLET (992px dan di bawahnya) === */
+@media (max-width: 992px) {
+  /* 1. Ubah layout utama menjadi 1-kolom */
+  .wrapper {
+    grid-template-columns: 1fr; /* Hanya satu kolom! */
+    padding: 4rem 2rem; /* Kurangi padding samping */
+    gap: 3rem; /* Beri jarak antara sidebar dan konten */
   }
-  .hero-buttons {
-    justify-content: center;
+
+  /* 2. MATIKAN "STICKY" SIDEBAR */
+  .sidebar-kiri {
+    position: static; /* Sangat penting! Matikan 'sticky' */
+    height: auto; /* Biarkan tinggi-nya otomatis */
   }
-  .nav-links {
+
+  /* 3. Tampilkan judul 'h2' di konten kanan */
+  /* (Sebelumnya kita sembunyikan di layar besar) */
+  .konten-section h2 {
+    display: block; /* Tampilkan "Experience", "Projects", dll. */
+  }
+
+  /* 4. Sembunyikan navigasi scroll-spy */
+  /* Karena sidebar tidak lagi 'sticky', navigasi ini
+       tidak lagi relevan dan memakan tempat. */
+  .navigasi-halaman {
     display: none;
+  }
+
+  /* 5. Sesuaikan ukuran font header */
+  .info-diri h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* === BREAKPOINT 2: PONSEL KECIL (576px dan di bawahnya) === */
+@media (max-width: 576px) {
+  /* 1. Kurangi padding lebih lanjut */
+  .wrapper {
+    padding: 3rem 1rem;
+  }
+
+  /* 2. Tumpuk kartu proyek (gambar di atas, teks di bawah) */
+  .project-card {
+    grid-template-columns: 1fr; /* Tumpuk gambar dan teks */
+    gap: 1rem; /* Kurangi jarak */
+  }
+
+  /* 3. Atur ulang font header agar tidak terlalu besar */
+  .info-diri h1 {
+    font-size: 2rem;
+  }
+
+  .info-diri h2 {
+    font-size: 1.25rem;
   }
 }
