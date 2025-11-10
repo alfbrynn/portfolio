@@ -53,6 +53,8 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   padding: 5rem 3rem;
+  position: relative; /* Diperlukan untuk z-index */
+  z-index: 1; /* Mengangkat semua konten di atas spotlight */
 }
 
 /* ==================
@@ -293,6 +295,28 @@ body {
   border-radius: 99px; /* Membuatnya bulat */
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+/* ==================
+   EFEK CURSOR SPOTLIGHT
+   =================== */
+.spotlight {
+  /* 1. Membuatnya menempel di layar, menutupi semua */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* 100% tinggi viewport */
+
+  /* 2. Pastikan di belakang konten (.wrapper z-index: 1) */
+  z-index: 0;
+
+  /* 3. Membuatnya 'tembus' klik mouse */
+  pointer-events: none;
+
+  /* 4. Ini adalah gradiennya (menggunakan warna tema Anda) */
+  background-image: radial-gradient(600px circle at 0 0, var(--warna-aksen-transparan), /* Harus ada di :root */ transparent 40%);
+  background-repeat: no-repeat;
 }
 
 /* ==================

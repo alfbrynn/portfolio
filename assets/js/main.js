@@ -64,4 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => {
     observer.observe(section);
   });
+
+  const spotlight = document.querySelector(".spotlight");
+
+  // 2. Pastikan elemennya ada sebelum menjalankan
+  if (spotlight) {
+    // 3. Tambahkan listener untuk 'mousemove' di seluruh jendela
+    window.addEventListener("mousemove", (e) => {
+      // 4. Ambil posisi X dan Y kursor
+      const x = e.clientX;
+      const y = e.clientY;
+
+      // 5. Perbarui style 'background-image' secara dinamis
+      spotlight.style.backgroundImage = `
+                radial-gradient(
+                    600px circle at ${x}px ${y}px, 
+                    var(--warna-aksen-transparan), 
+                    transparent 40%
+                )
+            `;
+    });
+  }
 });
